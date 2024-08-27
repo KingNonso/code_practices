@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
     def maxArea(self, height: List[int]) -> int:
         max_water = 0
         n = len(height)
@@ -13,6 +13,22 @@ class Solution:
                 max_water = new_max if new_max > max_water else max_water
         return max_water
 
+
+class Solution:
+    '''
+    https://www.pluralsight.com/resources/blog/guides/algorithm-templates-two-pointers-part-2
+    '''
+    def left_condition(self, left):
+        pass
+
+    def maxArea(self, height: List[int]) -> int:
+        left, right = 0, len(height) - 1
+        while left < right:
+            if self.left_condition(left):
+                left += 1
+            if self.right_condition(right):
+                right -= 1
+            self.process_logic(left, right)
 
 
 
