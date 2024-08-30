@@ -18,17 +18,37 @@ class Solution:
     '''
     https://www.pluralsight.com/resources/blog/guides/algorithm-templates-two-pointers-part-2
     '''
-    def left_condition(self, left):
+    def left_condition(self, height, left, right):
+        if height[left] < height[right]:
+            return True
+        else:
+            return False
+
+    def right_condition(self, right):
         pass
 
+    def process_logic(self, height, left, right, max_area):
+        current_area = min(height[left], height[right]) * (right - left)
+        max_area = max(max_area, current_area)
+        return max_area
+        
+
     def maxArea(self, height: List[int]) -> int:
-        left, right = 0, len(height) - 1
+        left = 0
+        right = len(height) - 1
+        max_area = 0
+
         while left < right:
-            if self.left_condition(left):
+            max_area = self.process_logic(height, left, right, max_area)
+
+            if self.left_condition(height, left, right):
                 left += 1
-            if self.right_condition(right):
+                print('move left pointer forward')
+            else:
+                print('move right pointer backward')
                 right -= 1
-            self.process_logic(left, right)
+
+        return max_area
 
 
 
