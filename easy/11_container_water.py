@@ -3,6 +3,7 @@ from typing import List
 
 class Solution1:
     def maxArea(self, height: List[int]) -> int:
+        # array ---- [a, b, c,]
         max_water = 0
         n = len(height)
         for i in range(n):
